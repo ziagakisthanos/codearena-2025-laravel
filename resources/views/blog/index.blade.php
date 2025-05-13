@@ -11,6 +11,9 @@
             <x-blog.post :post="$post" />
         @endforeach
       </div>
+      <div class="mt-16">
+        {{ $posts->links() }}
+      </div>
     </div>
   </div>
 @endsection

@@ -9,7 +9,7 @@
       </div>
       <div class="group relative">
         <h3 class="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-          <a href="#">
+          <a href="{{ route('blog.show', $post) }}">
             <span class="absolute inset-0"></span>
             {{ $post->title }}
           </a>
@@ -19,9 +19,9 @@
       <div class="relative mt-8 flex items-center gap-x-4">
         <div class="text-sm/6">
           <p class="font-semibold text-gray-900">
-            <a href="#">
+            <a href="{{ route('author', $post->author) }}">
               <span class="absolute inset-0"></span>
-              Michael Foster
+              {{ $post->author->name }}
             </a>
           </p>
         </div>
