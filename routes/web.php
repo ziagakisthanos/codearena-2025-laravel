@@ -7,8 +7,8 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/posts', [PostController::class, 'index'])->name('blog.index');
+Route::get('/posts', [PostController::class, 'index'])->name('posts');
 
-Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('blog.show');
+Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('post');
 
 Route::get('/authors/{user}', [PostController::class, 'index'])->name('author');

@@ -13,11 +13,11 @@ class PostController extends Controller
             return $query->where('user_id', $user->id);
         })->paginate(9);
 
-        return view('blog.index', compact('posts'));
+        return view('posts.index', compact('posts'));
     }
 
     public function show(Post $post)
     {
-        return view('blog.show', compact('post'));
+        return view('posts.show', compact('post'));
     }
 }
