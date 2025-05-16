@@ -14,6 +14,7 @@ class PostController extends Controller
         })
         ->whereNotNull('image')
         ->whereNotNull('published_at')
+        ->orderBy('promoted', 'desc')
         ->orderBy('published_at', 'desc')
         ->paginate(9);
 
@@ -29,6 +30,30 @@ class PostController extends Controller
         return view('posts.index', compact('posts', 'authors'));
     }
 
+    public function promoted(?User $user = null)
+    {
+        $posts = Post::when($user, function ($query) use ($user) {
+            return $query->where('id', $user->id);
+        })
+        ->whereNotNull('image')
+        ->whereNotNull('published_at')
+        ->where('promoted', true)
+        ->orderBy('published_at', 'desc')
+        ->paginate(9);
+
+        $authors = User::when($user, function ($query) use ($user) {
+            return $query->where('id', $user->id);
+        })
+        ->whereHas('posts', function($query) {
+            return $query->whereNotNull('published_at');
+        })
+        ->orderBy('user_id')
+        ->get();
+
+        return view('posts.index', compact('posts', 'authors'));
+
+
+    }
     public function show(Post $post)
     {
         if (is_null($post->updated_at)) {
@@ -41,4 +66,5 @@ class PostController extends Controller
 
         return view('posts.show', compact('post'));
     }
+
 }

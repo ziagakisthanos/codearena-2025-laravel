@@ -13,6 +13,7 @@ class Post extends Model
 
     protected $casts = [
         'published_at' => 'datetime',
+        'promoted' => 'boolean',
     ];
 
     public function author()
