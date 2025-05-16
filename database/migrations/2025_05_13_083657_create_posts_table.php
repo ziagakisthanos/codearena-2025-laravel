@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('slug')->nullable();
             $table->timestamps();
+            $table->timestamp('published_at')->nullable();
         });
     }
 
