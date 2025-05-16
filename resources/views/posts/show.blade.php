@@ -13,5 +13,22 @@
         <a href="">{{ $post->author->name }}</a>
       </div>
     </div>
+
+    <form id="comment-form" action="#" method="POST">
+      @csrf
+      <div>
+  
+        <label for="name">Name</label>
+        <input type="text" name="name" class="border-1" id="name" required>
+      </div>
+  
+      <div>
+  
+        <label for="body">Comment</label>
+        <textarea name="body" class="border-1" id="body" required></textarea>
+      </div>
+  
+      <button type="submit">Submit</button>
+    </form>
   </div>
 @endsection
